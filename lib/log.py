@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-# TODO(wmgaca): set up logging
-__logger = None
+import logging
+
+logging.basicConfig(format="%(levelname)6s %(name)s:  %(message)s",
+                    level=logging.DEBUG)
+
+__logger = logging.getLogger('AjWaj')
 
 _INDENT = ''
 _INDENT_STEP = 4

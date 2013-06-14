@@ -3,7 +3,8 @@
 
 import re
 import inspect
-from import logging
+import types
+from lib import log
 
 # key: function, value: boolean -- has return statement?
 __has_return_statement = {}
@@ -88,42 +89,42 @@ def footprint(function):
             call_str = 'CALL %s.%s (' % (function.__module__, function.__name__)
 
         if not farglist:
-            logging.info('%s)' % call_str)
+            log.info('%s)' % call_str)
         elif len(farglist) == 1:
-            logging.info('%s%s = %s)' % (call_str,
+            log.info('%s%s = %s)' % (call_str,
                                          farglist[0][0],
                                          __format_value(farglist[0][1])))
         else:
             indent = ' ' * len(call_str)
 
             # First parameter
-            logging.info('%s%s = %s' % (call_str,
+            log.info('%s%s = %s' % (call_str,
                                         farglist[0][0],
                                         __format_value(farglist[0][1])))
 
             # [1:-1] parameters
             for name, value in farglist[1:-1]:
-                logging.info('%s%s = %s' % (indent, name,
+                log.info('%s%s = %s' % (indent, name,
                                             __format_value(value)))
 
             # Last parameters
-            logging.info('%s%s = %s)' % (indent,
+            log.info('%s%s = %s)' % (indent,
                                          farglist[-1][0],
                                          __format_value(farglist[-1][1])))
 
-        logging.indent()
+        log.indent()
 
         # Invoke the functions
         result = function(*args, **kwargs)
 
         # Print footer and the return value (if present)
         if __function_has_return_statement(function):
-            logging.info('END  %s -> %s' % (function.__name__,
+            log.info('END  %s -> %s' % (function.__name__,
                                             __format_value(result)))
         else:
-            logging.info('END  %s' % function.__name__)
+            log.info('END  %s' % function.__name__)
 
-        logging.unindent()
+        log.unindent()
 
         # Return function result
         return result
@@ -174,3 +175,9 @@ class FootprintAllMethods(_DecorateAllMethods):
 
     _decorator_name = 'footprint'
     _disable = ['__repr__', '__str__']
+
+
+def register_footprint(global_items):
+    for name, value in global_items.items():
+        if isinstance(value, types.FunctionType):
+            print '%s is a function type' % name
