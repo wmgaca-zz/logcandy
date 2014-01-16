@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='logcandy',
-    version='0.1.0',
+    version='0.1.0.1',
     author='Wojciech Gaca',
     author_email='wmgaca@gmail.com',
     packages=['logcandy'],
