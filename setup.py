@@ -8,9 +8,9 @@ setup(
     packages=['logcandy'],
     scripts=[],
     url='http://github.com/wmgaca/logcandy',
-    license='LICENSE.txt',
+    license='LICENSE',
     description='Python logging utils.',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     install_requires=[]
 )
 
