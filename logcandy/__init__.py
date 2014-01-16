@@ -1,0 +1,1 @@
+from decorators import footprint, FootprintAllMethods, disable_auto_decoration
