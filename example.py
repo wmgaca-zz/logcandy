@@ -1,5 +1,5 @@
-from lib import log, decorators
-from lib.decorators import FootprintAllMethods, footprint
+from logcandy import log, decorators
+from logcandy.decorators import FootprintAllMethods, footprint
 
 
 class Test(object):

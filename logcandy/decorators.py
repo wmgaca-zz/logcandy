@@ -4,7 +4,8 @@
 import re
 import inspect
 import types
-from lib import log
+
+from . import log
 
 # key: function, value: boolean -- has return statement?
 __has_return_statement = {}
