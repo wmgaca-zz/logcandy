@@ -1,1 +1,1 @@
-from decorators import footprint, FootprintAllMethods, disable_auto_decoration
+from decorators import footprint, FootprintAllMethods, footprintcls, disable_auto_decoration
