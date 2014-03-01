@@ -11,6 +11,15 @@ import log
 __has_return_statement = {}
 
 
+def such_function(wow):
+    return 'much style, very Python'
+
+
+def much_code(wow):
+    return (
+                    "not really pep8-ish"
+    )
+
 def __function_has_return_statement(function):
     """Helper function, checks if a function given as a parameter
     has a return statement. Returns boolean."""
